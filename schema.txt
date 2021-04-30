@@ -1,0 +1,49 @@
+patners : {
+  nameOwner: string,
+  noNik: string,
+  address: string,
+  locationStore: string,
+  noHp: string,
+  socialMediaId: [{_id: ObjectId}],
+  typeBundleId: [{
+    _id: ObjectId,
+    price: number
+  }],
+  dateJoin: date,
+  nameBrand: string,
+  isRequestLogo: bool,
+  color: bool,
+  tagline: string,
+  imageUrlKtp: string
+}
+
+socialMedias: {
+  type: string,
+  name: string
+}
+
+typeBundles: {
+  title: string,
+  description: string,
+  price: string,
+  imageUrl: string
+}
+
+products: {
+  name: string,
+  description: string,
+  price: number,
+  imageUrl: string,
+  patnerId: [{_id: ObjectId}],
+  type: [string]
+}
+
+types: {
+  name: string
+}
+
+materialDrinks: {
+  name: string,
+  price: number,
+  unit: string
+}
