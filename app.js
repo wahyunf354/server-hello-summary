@@ -8,6 +8,14 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var adminRouter = require("./routes/admin");
 
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/db_hello_summer", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
+
 var app = express();
 
 // view engine setup

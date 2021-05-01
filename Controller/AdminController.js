@@ -3,7 +3,7 @@ function index(req, res, next) {
 }
 
 function login(req, res, next) {
-  res.render("admin/login", { title: "Hello Summer | Login" });
+  res.render("admin/login", { title: "Hello Summer | Log in" });
 }
 
 module.exports = {
