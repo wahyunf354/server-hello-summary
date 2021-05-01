@@ -1,0 +1,87 @@
+<%- include('../../layout/header.ejs') %>
+  <%- include('../../layout/navbar.ejs') %>
+    <%- include('../../layout/sidebar.ejs') %>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Sosial Media Utama</h1>
+              </div>
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-12">
+
+                <div class="card">
+                  <div class="card-header">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                      data-target="#ModalAddSocialMedia">
+                      Tambah Sosial Media
+                    </button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <table id="table_social_media" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Username</th>
+                          <th>Media</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            1
+                          </td>
+                          <td>@hellosummer.pdg
+                          </td>
+                          <td>Instagram</td>
+                          <td>
+                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-info-circle"></i></a>
+                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+            <div class="row">
+
+            </div>
+            <!-- /.row (main row) -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <%- include('./add.ejs') %>
+        <%- include('../../layout/footer.ejs') %>
+
+          <script>
+            $(function () {
+              $("#table_social_media").DataTable({
+                "responsive": true
+              })
+            });
+          </script>

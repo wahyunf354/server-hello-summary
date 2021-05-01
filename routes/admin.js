@@ -5,6 +5,7 @@ const ProductController = require("../Controller/ProductController");
 const AdminController = require("../Controller/AdminController");
 const TypeBundleController = require("../Controller/TypeBundleController");
 const MaterialDrinkController = require("../Controller/MaterialDrinkController");
+const SocialMediaController = require("../Controller/SocialMediaController");
 
 /* GET Dashboard page. */
 router.get("/", AdminController.index);
@@ -21,5 +22,9 @@ router.get("/type_bundle", TypeBundleController.index);
 
 // Material Drink Page
 router.get("/material_drink", MaterialDrinkController.index);
+
+// Social Media Page
+router.get("/social_media", SocialMediaController.index);
+router.post("/social_media", SocialMediaController.addData);
 
 module.exports = router;
