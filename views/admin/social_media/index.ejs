@@ -43,19 +43,23 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>@hellosummer.pdg
-                          </td>
-                          <td>Instagram</td>
-                          <td>
-                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-info-circle"></i></a>
-                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
-                          </td>
-                        </tr>
+                        <% for( let index=0; index < data.length; index++ ) { %>
+                          <tr>
+                            <td>
+                              <%= index+1 %>
+                            </td>
+                            <td>
+                              <%= data[index].username %>
+                            </td>
+                            <td>
+                              <%= data[index].media %>
+                            </td>
+                            <td>
+                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
+                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
+                            </td>
+                          </tr>
+                          <% } %>
                       </tbody>
                     </table>
                   </div>
