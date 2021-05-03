@@ -55,7 +55,9 @@
                               <%= data[index].media %>
                             </td>
                             <td>
-                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
+                              <a href="javascript:void()" data-id="<%= data[index]._id %>"
+                                data-username="<%= data[index].username %>" data-media="<%= data[index].media %>"
+                                type="button" class="btn btn-sm text-primary button-edit"><i class="fa fa-edit"></i></a>
                               <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
                             </td>
                           </tr>
@@ -80,12 +82,26 @@
         <!-- /.content -->
       </div>
       <%- include('./add.ejs') %>
-        <%- include('../../layout/footer.ejs') %>
+        <%- include('./edit.ejs') %>
+          <%- include('../../layout/footer.ejs') %>
 
-          <script>
-            $(function () {
-              $("#table_social_media").DataTable({
-                "responsive": true
+            <script>
+              $(function () {
+                $("#table_social_media").DataTable()
+              });
+
+              $('#table_social_media').on('click', '.button-edit', function () {
+                // take all data in variable
+                let id = $(this).data('id')
+                let media = $(this).data('media')
+                let username = $(this).data('username')
+
+                // display data on from input
+                $('.username').val(username);
+                $('.media').val(media);
+                $('.id').val(id);
+
+                // display a modal
+                $('#ModalEditSocialMedia').modal('show')
               })
-            });
-          </script>
+            </script>

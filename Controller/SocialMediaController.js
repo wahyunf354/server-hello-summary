@@ -25,10 +25,14 @@ const addData = async (req, res) => {
   }
 };
 
-const getAllData = async (req, res) => {
+const editData = async (req, res) => {
   try {
-    const data = await SocialMedia.find();
-    console.log(data);
+    const { id, username, media } = req.body;
+    const socialMedia = await SocialMedia.findOne({ _id: id });
+    socialMedia.username = username;
+    socialMedia.media = media;
+    await socialMedia.save();
+    res.redirect("/admin/social_media");
   } catch (error) {
     console.log(error);
   }
@@ -37,4 +41,5 @@ const getAllData = async (req, res) => {
 module.exports = {
   index,
   addData,
+  editData,
 };
