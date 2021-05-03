@@ -1,11 +1,11 @@
 <!-- Modal -->
-<div class="modal fade" id="ModalAddSocialMedia" tabindex="-1" aria-labelledby="ModalAddSocialMediaLabel"
+<div class="modal fade" id="ModalEditMaterialDrink" tabindex="-1" aria-labelledby="ModalEditMaterialDrinkLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="/admin/social_media" method="POST">
+      <form action="/admin/material_drink" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalAddSocialMediaLabel">Tambah Sosial Media</h5>
+          <h5 class="modal-title" id="ModalEditMaterialDrinkLabel">Tambah Suplai Bahan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -13,13 +13,16 @@
         <div class="modal-body">
           <div class="card-body">
             <div class="form-group">
-              <label for="username">Username</label>
-              <input type="ntext" class="form-control" name="username" id="username"
-                placeholder="Masukan username sosial media">
+              <label for="name">Nama</label>
+              <input type="ntext" class="form-control" name="name" id="name" placeholder="Masukan nama bahan">
             </div>
             <div class="form-group">
-              <label for="media">Media</label>
-              <input type="ntext" class="form-control" name="media" id="media" placeholder="Masukan medianya">
+              <label for="unit">Satuan</label>
+              <input type="text" class="form-control" name="unit" id="unit" placeholder="Masukan satuan">
+            </div>
+            <div class="form-group">
+              <label for="price">Harga</label>
+              <input type="number" class="form-control" name="price" id="price" placeholder="Masukan Harga">
             </div>
           </div>
           <!-- /.card-body -->
