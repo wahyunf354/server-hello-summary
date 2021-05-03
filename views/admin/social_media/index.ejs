@@ -55,10 +55,15 @@
                               <%= data[index].media %>
                             </td>
                             <td>
-                              <a href="javascript:void()" data-id="<%= data[index]._id %>"
-                                data-username="<%= data[index].username %>" data-media="<%= data[index].media %>"
-                                type="button" class="btn btn-sm text-primary button-edit"><i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
+                              <form action="/admin/social_media/<%= data[index]._id %>?_method=DELETE" method="POST">
+                                <a href="javascript:void()" data-id="<%= data[index]._id %>"
+                                  data-username="<%= data[index].username %>" data-media="<%= data[index].media %>"
+                                  type="button" class="btn btn-sm text-primary button-edit"><i
+                                    class="fa fa-edit"></i></a>
+                                <button type="submit" class="btn btn-sm text-primary">
+                                  <i class="fa fa-trash"></i>
+                                </button>
+                              </form>
                             </td>
                           </tr>
                           <% } %>
@@ -86,6 +91,8 @@
           <%- include('../../layout/footer.ejs') %>
 
             <script>
+
+              // Config a data tabel
               $(function () {
                 $("#table_social_media").DataTable()
               });

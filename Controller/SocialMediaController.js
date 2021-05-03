@@ -38,8 +38,20 @@ const editData = async (req, res) => {
   }
 };
 
+const deleteData = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const socialMedia = await SocialMedia.findOne({ _id: id });
+    await socialMedia.remove();
+    res.redirect("/admin/social_media");
+  } catch (error) {
+    console.log(eror);
+  }
+};
+
 module.exports = {
   index,
   addData,
   editData,
+  deleteData,
 };

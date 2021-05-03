@@ -27,5 +27,6 @@ router.get("/material_drink", MaterialDrinkController.index);
 router.get("/social_media", SocialMediaController.index);
 router.post("/social_media", SocialMediaController.addData);
 router.put("/social_media", SocialMediaController.editData);
+router.delete("/social_media/:id", SocialMediaController.deleteData);
 
 module.exports = router;
