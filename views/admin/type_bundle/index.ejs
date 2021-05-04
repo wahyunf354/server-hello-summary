@@ -9,7 +9,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Produk</h1>
+                <h1 class="m-0">Paket Franchise</h1>
               </div>
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->
@@ -25,7 +25,10 @@
 
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Tabel</h3>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddTypeBundle">
+                      Tambah Paket Franchise
+                    </button>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
@@ -73,11 +76,12 @@
         <!-- /.content -->
       </div>
       <%- include('../../layout/footer.ejs') %>
+        <%- include('./add.ejs') %>
 
-        <script>
-          $(function () {
-            $("#table_patner").DataTable({
-              "responsive": true
-            })
-          });
-        </script>
+          <script>
+            $(function () {
+              $("#table_patner").DataTable({
+                "responsive": true
+              })
+            });
+          </script>

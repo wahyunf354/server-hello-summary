@@ -18,7 +18,6 @@ const index = async (req, res) => {
 
 const addData = async (req, res) => {
   const { username, media } = req.body;
-  console.log(username, media);
   try {
     await SocialMedia.create({ username, media });
     req.flash("message", "Berhasil Menambah Data");
@@ -26,7 +25,7 @@ const addData = async (req, res) => {
     res.redirect("/admin/social_media");
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/social_media");
   }
 };
@@ -43,7 +42,7 @@ const editData = async (req, res) => {
     res.redirect("/admin/social_media");
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/social_media");
   }
 };
@@ -59,7 +58,7 @@ const deleteData = async (req, res) => {
     res.redirect("/admin/social_media");
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/social_media");
   }
 };

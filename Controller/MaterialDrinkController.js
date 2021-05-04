@@ -11,7 +11,7 @@ const index = async (req, res) => {
     });
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/material_drink");
   }
 };
@@ -26,7 +26,7 @@ const addData = async (req, res) => {
     res.redirect("/admin/material_drink");
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/material_drink");
   }
 };
@@ -44,7 +44,7 @@ const editData = async (req, res) => {
     res.redirect("/admin/material_drink");
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/material_drink");
   }
 };
@@ -60,7 +60,7 @@ const deleteData = async (req, res) => {
     res.redirect("/admin/material_drink");
   } catch (error) {
     req.flash("message", `Error: ${error.message}`);
-    req.flash("messageStatus", "error");
+    req.flash("messageStatus", "danger");
     res.redirect("/admin/material_drink");
   }
 };

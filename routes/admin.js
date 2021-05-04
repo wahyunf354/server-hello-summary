@@ -19,6 +19,7 @@ router.get("/product", ProductController.index);
 
 // TypeBundle Page
 router.get("/type_bundle", TypeBundleController.index);
+router.post("/type_bundle", TypeBundleController.addData);
 
 // Material Drink Page
 router.get("/material_drink", MaterialDrinkController.index);
