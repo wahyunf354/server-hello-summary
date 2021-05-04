@@ -10,7 +10,9 @@ const index = async (req, res) => {
       messageStatus: req.flash("messageStatus"),
     });
   } catch (error) {
-    console.log(error);
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", "error");
+    res.redirect("/admin/social_media");
   }
 };
 
@@ -23,9 +25,8 @@ const addData = async (req, res) => {
     req.flash("messageStatus", "success");
     res.redirect("/admin/social_media");
   } catch (error) {
-    req.flash("message", "Gagal Menambah Data");
+    req.flash("message", `Error: ${error.message}`);
     req.flash("messageStatus", "error");
-    console.log("ini error", error);
     res.redirect("/admin/social_media");
   }
 };
@@ -41,9 +42,8 @@ const editData = async (req, res) => {
     req.flash("messageStatus", "success");
     res.redirect("/admin/social_media");
   } catch (error) {
-    req.flash("message", "Gagal Mengubah Data");
+    req.flash("message", `Error: ${error.message}`);
     req.flash("messageStatus", "error");
-    console.log(error);
     res.redirect("/admin/social_media");
   }
 };
@@ -58,9 +58,8 @@ const deleteData = async (req, res) => {
     req.flash("messageStatus", "warning");
     res.redirect("/admin/social_media");
   } catch (error) {
-    req.flash("message", "Gagal Menhapus Data");
+    req.flash("message", `Error: ${error.message}`);
     req.flash("messageStatus", "error");
-    console.log(eror);
     res.redirect("/admin/social_media");
   }
 };

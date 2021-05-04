@@ -8,9 +8,10 @@
         <div class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Suplai Bahan</h1>
-              </div>
+              <%- include('../../layout/message.ejs') %>
+                <div class="col-sm-6">
+                  <h1 class="m-0">Suplai Bahan</h1>
+                </div>
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->
         </div>
@@ -60,10 +61,16 @@
                             </td>
                             <td>
                               <!-- <a href="#" class="btn btn-sm text-primary"><i class="fa fa-info-circle"></i></a> -->
-                              <a type="button" href="javascript:void()"
-                                class="btn btn-sm text-primary button-edit-material-drink" data-name="<%= e.name %>"
-                                data-unit="<%= e.unit %>" data-price="<%= e.price %>"><i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
+                              <form action="/admin/material_drink/<%= e._id %>?_method=DELETE" method="post">
+                                <a type="button" href="javascript:void()"
+                                  class="btn btn-sm text-primary button-edit-material-drink" data-name="<%= e.name %>"
+                                  data-id="<%= e._id %>" data-unit="<%= e.unit %>" data-price="<%= e.price %>">
+                                  <i class="fa fa-edit"></i></a>
+                                <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data?')"
+                                  class="btn btn-sm text-primary">
+                                  <i class="fa fa-trash"></i>
+                                </button>
+                              </form>
                             </td>
                           </tr>
                           <% }) %>
@@ -87,21 +94,29 @@
         <!-- /.content -->
       </div>
       <%- include('./add.ejs') %>
-        <%- include('../../layout/footer.ejs') %>
+        <%- include('./edit.ejs') %>
+          <%- include('../../layout/footer.ejs') %>
 
-          <script>
-            $(function () {
-              $("#table_material_drink").DataTable({
-                "responsive": true
+            <script>
+              $(function () {
+                $("#table_material_drink").DataTable({
+                  "responsive": true
+                })
+              });
+
+              $('#table_material_drink').on('click', '.button-edit-material-drink', function () {
+
+                let name = $(this).data('name')
+                let unit = $(this).data('unit')
+                let price = $(this).data('price')
+                let id = $(this).data('id')
+
+                $('.name').val(name)
+                $('.unit').val(unit)
+                $('.price').val(price)
+                $('.id').val(id)
+
+                $('#ModalEditMaterialDrink').modal('show')
               })
-            });
 
-            $('#table_material_drink').on('click', '.button-edit-material-drink', function () {
-              let name = $(this).data('name')
-              let unit = $(this).data('unit')
-              let price = $(this).data('price')
-              //FIXME MODAL BELUM MUNCUL
-              $('#ModalEditMaterialDrink').modal('show')
-            })
-
-          </script>
+            </script>

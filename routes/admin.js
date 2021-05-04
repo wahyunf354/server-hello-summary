@@ -23,6 +23,8 @@ router.get("/type_bundle", TypeBundleController.index);
 // Material Drink Page
 router.get("/material_drink", MaterialDrinkController.index);
 router.post("/material_drink", MaterialDrinkController.addData);
+router.put("/material_drink", MaterialDrinkController.editData);
+router.delete("/material_drink/:id", MaterialDrinkController.deleteData);
 
 // Social Media Page
 router.get("/social_media", SocialMediaController.index);

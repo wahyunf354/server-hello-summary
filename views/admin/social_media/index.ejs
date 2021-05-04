@@ -61,7 +61,8 @@
                                   data-username="<%= data[index].username %>" data-media="<%= data[index].media %>"
                                   type="button" class="btn btn-sm text-primary button-edit"><i
                                     class="fa fa-edit"></i></a>
-                                <button type="submit" class="btn btn-sm text-primary">
+                                <button type="submit" class="btn btn-sm text-primary"
+                                  onclick="return confirm('Apakah anda yakin akan menghapus data?')">
                                   <i class="fa fa-trash"></i>
                                 </button>
                               </form>
