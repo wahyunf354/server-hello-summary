@@ -14,7 +14,9 @@ patners : {
   isRequestLogo: bool,
   color: bool,
   tagline: string,
-  imageUrlKtp: string
+  imageUrlKtp: string,
+  username: string,
+  password: string
 }
 
 socialMedias: {

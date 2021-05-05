@@ -17,12 +17,10 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  patnerId: [
-    {
-      type: ObjectId,
-      ref: "Patner",
-    },
-  ],
+  patnerId: {
+    type: ObjectId,
+    ref: "Patner",
+  },
   type: [
     {
       type: ObjectId,

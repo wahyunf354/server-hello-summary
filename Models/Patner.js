@@ -44,22 +44,39 @@ const patnerScheme = new mongoose.Schema({
     type: String,
     required: true,
   },
-  socialMediaId: [
-    {
-      type: ObjectId,
-      required: true,
-    },
-  ],
+  facebook: {
+    type: String,
+  },
+  instagram: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
   typeBundleId: [
     {
       _id: {
         type: ObjectId,
-        required: true,
+        ref: "TypeBundle",
       },
       price: {
-        type: ObjectId,
+        type: Number,
         required: true,
       },
+    },
+  ],
+  productId: [
+    {
+      type: ObjectId,
+      ref: "Product",
     },
   ],
 });

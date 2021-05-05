@@ -6,7 +6,7 @@ const AdminController = require("../Controller/AdminController");
 const TypeBundleController = require("../Controller/TypeBundleController");
 const MaterialDrinkController = require("../Controller/MaterialDrinkController");
 const SocialMediaController = require("../Controller/SocialMediaController");
-const { uplaod, upload } = require("../middleware/multer");
+const { upload } = require("../middleware/multer");
 
 /* GET Dashboard page. */
 router.get("/", AdminController.index);
@@ -14,6 +14,8 @@ router.get("/login", AdminController.login);
 
 // Patner Page
 router.get("/patner", PatnerController.index);
+router.get("/patner/add", PatnerController.displayformAdd);
+router.post("/patner", upload, PatnerController.addData);
 
 // Product Page
 router.get("/product", ProductController.index);
