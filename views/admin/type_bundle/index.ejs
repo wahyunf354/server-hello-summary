@@ -8,9 +8,10 @@
         <div class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Paket Franchise</h1>
-              </div>
+              <%- include('../../layout/message.ejs') %>
+                <div class="col-sm-6">
+                  <h1 class="m-0">Paket Franchise</h1>
+                </div>
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->
         </div>
@@ -43,19 +44,27 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>Paket 1</td>
-                          <td>Bahan bahan</td>
-                          <td>200.000</td>
-                          <td>
-                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-info-circle"></i></a>
-                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
-                            <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
-                          </td>
-                        </tr>
+                        <% typeBundles.forEach((typeBundle, i)=> { %>
+                          <tr>
+                            <td>
+                              <%= i+1 %>
+                            </td>
+                            <td>
+                              <%= typeBundle.title %>
+                            </td>
+                            <td>
+                              <%= typeBundle.price %>
+                            </td>
+                            <td>
+                              <%= typeBundle.description %>
+                            </td>
+                            <td>
+                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-info-circle"></i></a>
+                              <a type="button" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
+                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
+                            </td>
+                          </tr>
+                          <% }) %>
                       </tbody>
                     </table>
                   </div>
@@ -81,7 +90,21 @@
           <script>
             $(function () {
               $("#table_patner").DataTable({
-                "responsive": true
+                "columnDefs": [
+                  {
+                    "targets": 0,
+                    "width": "5%"
+                  },
+                  {
+                    "targets": 3,
+                    "width": "50%"
+                  },
+
+                  {
+                    "targets": 4,
+                    "orderable": false
+                  }
+                ]
               })
             });
           </script>

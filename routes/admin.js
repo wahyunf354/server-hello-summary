@@ -6,6 +6,7 @@ const AdminController = require("../Controller/AdminController");
 const TypeBundleController = require("../Controller/TypeBundleController");
 const MaterialDrinkController = require("../Controller/MaterialDrinkController");
 const SocialMediaController = require("../Controller/SocialMediaController");
+const { uplaod, upload } = require("../middleware/multer");
 
 /* GET Dashboard page. */
 router.get("/", AdminController.index);
@@ -19,7 +20,7 @@ router.get("/product", ProductController.index);
 
 // TypeBundle Page
 router.get("/type_bundle", TypeBundleController.index);
-router.post("/type_bundle", TypeBundleController.addData);
+router.post("/type_bundle", upload, TypeBundleController.addData);
 
 // Material Drink Page
 router.get("/material_drink", MaterialDrinkController.index);
