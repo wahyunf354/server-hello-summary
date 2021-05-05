@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div class="modal fade" id="ModalEditTypeBundle" tabindex="-1" aria-labelledby="ModalEditTypeBundleLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/admin/type_bundle?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalEditTypeBundleLabel">Ubah Paket Franchise</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="title">Judul</label>
+              <input type="text" class="form-control title" name="title" id="title"
+                placeholder="Masukan judul pake franchise" required>
+            </div>
+            <div class="form-group">
+              <label for="price">Harga</label>
+              <input type="number" class="form-control price" name="price" id="price"
+                placeholder="Masukan harga paket franchise" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Keterangan</label>
+              <textarea type="title" class="form-control description" name="description" id="description"
+                placeholder="Masukan keterangan paket franchise" cols="30" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="image">Gambar</label>
+              <input type="file" class="form-control" name="image" id="image">
+              <span>Pilih gambar jika ingin mengubah</span>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="id" class="id">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

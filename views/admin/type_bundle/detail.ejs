@@ -1,0 +1,89 @@
+<%- include('../../layout/header.ejs') %>
+  <%- include('../../layout/navbar.ejs') %>
+    <%- include('../../layout/sidebar.ejs') %>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Paket Franchise</h1>
+              </div>
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <img src="/<%= typeBundle.imageUrl %>" style="width: 100%;" alt="<%= typeBundle.title %>">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h4 class="h4">
+                          <%= typeBundle.title %>
+                        </h4>
+                        <p class="card-text">
+                          <%= typeBundle.description %>
+                        </p>
+                        <h3 class="card-text">
+                          <small class="text-muted">
+                            Rp. <%= typeBundle.price %>,-
+                          </small>
+                        </h3>
+                        <a href="/admin/type_bundle" class="btn btn-sm btn-warning mt-3 mr-2">Kembali</a>
+                        <a href="javascript:voit()" data-title="<%= typeBundle.title %>" data-id="<%= typeBundle._id %>"
+                          data-price="<%= typeBundle.price %>" data-description="<%= typeBundle.description %>"
+                          class="btn btn-primary btn-sm button-edit mt-3">
+                          Ubah
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+            <div class="row">
+
+            </div>
+            <!-- /.row (main row) -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <%- include('../../layout/footer.ejs') %>
+        <%- include('./edit.ejs') %>
+
+          <script>
+            // Even Click Button Edit
+            $('.button-edit').on('click', function () {
+
+              // assign variable from data paket franchise
+              let title = $(this).data('title')
+              let price = $(this).data('price')
+              let description = $(this).data('description')
+              let id = $(this).data('id')
+
+              // Display value on form
+              $('.title').val(title)
+              $('.price').val(price)
+              $('.description').val(description)
+              $('.id').val(id)
+
+              // Display Modal
+              $('#ModalEditTypeBundle').modal('show')
+            })
+          </script>

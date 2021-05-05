@@ -33,7 +33,7 @@
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
-                    <table id="table_patner" class="table table-bordered table-striped">
+                    <table id="table_type_bundle" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>No</th>
@@ -53,15 +53,26 @@
                               <%= typeBundle.title %>
                             </td>
                             <td>
-                              <%= typeBundle.price %>
+                              Rp. <%= typeBundle.price %>,-
                             </td>
                             <td>
                               <%= typeBundle.description %>
                             </td>
                             <td>
-                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-info-circle"></i></a>
-                              <a type="button" class="btn btn-sm text-primary"><i class="fa fa-edit"></i></a>
-                              <a href="#" class="btn btn-sm text-primary"><i class="fa fa-trash"></i></a>
+                              <form action="/admin/type_bundle/<%= typeBundle._id %>?_method=DELETE" method="POST">
+                                <a href="/admin/type_bundle/<%= typeBundle._id %>" class="btn btn-sm text-primary">
+                                  <i class="fa fa-info-circle"></i>
+                                </a>
+
+                                <a href="javascript:voit()" data-title="<%= typeBundle.title %>"
+                                  data-id="<%= typeBundle._id %>" data-price="<%= typeBundle.price %>"
+                                  data-description="<%= typeBundle.description %>"
+                                  class="btn btn-sm text-primary button-edit">
+                                  <i class="fa fa-edit"></i>
+                                </a>
+                                <button type="submit" class="btn btn-sm text-primary"><i
+                                    class="fa fa-trash"></i></button>
+                              </form>
                             </td>
                           </tr>
                           <% }) %>
@@ -86,25 +97,47 @@
       </div>
       <%- include('../../layout/footer.ejs') %>
         <%- include('./add.ejs') %>
+          <%- include('./edit.ejs') %>
 
-          <script>
-            $(function () {
-              $("#table_patner").DataTable({
-                "columnDefs": [
-                  {
-                    "targets": 0,
-                    "width": "5%"
-                  },
-                  {
-                    "targets": 3,
-                    "width": "50%"
-                  },
+            <script>
+              $(function () {
+                $("#table_type_bundle").DataTable({
+                  "responsive": true,
+                  "columnDefs": [
+                    {
+                      "targets": 0,
+                      "width": "5%"
+                    },
+                    {
+                      "targets": 3,
+                      "width": "50%"
+                    },
 
-                  {
-                    "targets": 4,
-                    "orderable": false
-                  }
-                ]
+                    {
+                      "targets": 4,
+                      "orderable": false
+                    }
+                  ]
+                })
+              });
+
+              // Even Click Button Edit
+              $('#table_type_bundle').on('click', '.button-edit', function () {
+
+                // assign variable from data paket franchise
+                let title = $(this).data('title')
+                let price = $(this).data('price')
+                let description = $(this).data('description')
+                let id = $(this).data('id')
+
+                // Display value on form
+                $('.title').val(title)
+                $('.price').val(price)
+                $('.description').val(description)
+                $('.id').val(id)
+
+                // Display Modal
+                $('#ModalEditTypeBundle').modal('show')
               })
-            });
-          </script>
+
+            </script>

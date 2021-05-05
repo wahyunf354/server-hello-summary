@@ -21,6 +21,9 @@ router.get("/product", ProductController.index);
 // TypeBundle Page
 router.get("/type_bundle", TypeBundleController.index);
 router.post("/type_bundle", upload, TypeBundleController.addData);
+router.put("/type_bundle", upload, TypeBundleController.editData);
+router.get("/type_bundle/:id", upload, TypeBundleController.detailData);
+router.delete("/type_bundle/:id", TypeBundleController.deleteData);
 
 // Material Drink Page
 router.get("/material_drink", MaterialDrinkController.index);
