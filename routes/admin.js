@@ -14,8 +14,9 @@ router.get("/login", AdminController.login);
 
 // Patner Page
 router.get("/patner", PatnerController.index);
-router.get("/patner/add", PatnerController.displayformAdd);
 router.post("/patner", upload, PatnerController.addData);
+router.get("/patner/add", PatnerController.displayformAdd);
+router.get("/patner/:id", PatnerController.detailPatner);
 
 // Product Page
 router.get("/product", ProductController.index);

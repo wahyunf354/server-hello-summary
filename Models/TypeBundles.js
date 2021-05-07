@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const typeBundleSchema = mongoose.Schema({
   title: {
@@ -16,6 +17,12 @@ const typeBundleSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  patnerId: [
+    {
+      type: ObjectId,
+      ref: "Patner",
+    },
+  ],
 });
 
 module.exports = mongoose.model("TypeBundle", typeBundleSchema);

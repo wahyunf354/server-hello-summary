@@ -8,9 +8,10 @@
         <div class="content-header">
           <div class="container-fluid">
             <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Patner</h1>
-              </div>
+              <%- include('../../layout/message.ejs') %>
+                <div class="col-sm-6">
+                  <h1 class="m-0">Patner</h1>
+                </div>
             </div><!-- /.row -->
           </div><!-- /.container-fluid -->
         </div>
@@ -32,30 +33,30 @@
                   <!-- /.card-header -->
                   <div class="card-body">
 
-                    <form action="/admin/patner" method="post" enctype="multipart/form-data">
+                    <form action="/admin/patner" method="POST" enctype="multipart/form-data">
                       <div class="row">
                         <div class="form-group col-md-6">
-                          <label for="nameOwner">Nama Pemilik Toko</label>
+                          <label for="nameOwner">Nama Pemilik Toko *</label>
                           <input type="text" class="form-control" name="nameOwner" id="nameOwner"
                             placeholder="Masukan nama pemilik toko" required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="noNik">No NIK</label>
+                          <label for="noNik">No NIK *</label>
                           <input type="text" class="form-control" name="noNik" id="noNik"
                             placeholder="Masukan nomer NIK" required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="address">Alamat Pemilik Toko</label>
+                          <label for="address">Alamat Pemilik Toko *</label>
                           <textarea type="text" class="form-control" name="address" id="address"
                             placeholder="Masukan alamat pemilik toko" rows="3" required></textarea>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="locationStore">Lokasi Toko</label>
+                          <label for="locationStore">Lokasi Toko *</label>
                           <textarea type="text" class="form-control" name="locationStore" id="locationStore"
                             placeholder="Masukan lokasi toko" rows="3" required></textarea>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="noHp">No HP</label>
+                          <label for="noHp">No HP / WA *</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text bg-white"><i class="fas fa-phone"></i></span>
@@ -65,23 +66,23 @@
                           </div>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="dateJoin">Tanggal Bergabung</label>
+                          <label for="dateJoin">Tanggal Bergabung *</label>
                           <div class="input-group">
                             <input type="date" class="form-control" name="dateJoin" id="dateJoin" required>
                           </div>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="nameBrand">Nama Brand</label>
+                          <label for="nameBrand">Nama Brand *</label>
                           <input type="text" class="form-control" name="nameBrand" id="nameBrand"
                             placeholder="Masukan nama brand" required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="tagline">Tagline</label>
+                          <label for="tagline">Tagline *</label>
                           <input type="text" class="form-control" name="tagline" id="tagline"
                             placeholder="Masukan teks tegline" required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="isRequestLogo">Request Logo</label>
+                          <label for="isRequestLogo">Request Logo *</label>
                           <select name="isRequestLogo" id="isRequestLogo" class="form-control" required>
                             <option selected> -- Request logo -- </option>
                             <option value="1">Ya</option>
@@ -89,7 +90,7 @@
                           </select>
                         </div>
                         <div class="form-group col-md-6" id="color">
-                          <label for="color">Warna</label>
+                          <label for="color">Warna *</label>
                           <div class="input-group my-colorpicker2">
                             <input type="text" name="color" id="color" class="form-control">
                             <div class="input-group-append">
@@ -98,32 +99,32 @@
                           </div>
                         </div>
                         <div class="form-group col-md-6" id="color">
-                          <label for="imageUrlKtp">Unggah Foto KTP</label>
-                          <input type="file" class="form-control" name="imageUrlKtp" id="imageUrlKtp" required>
+                          <label for="image">Unggah Foto KTP *</label>
+                          <input type="file" class="form-control" name="image" id=" image" required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="typeBundle">Paket Franchise</label>
-                          <select name="typeBundle" id="typeBundle" class="form-control" required>
+                          <label for="typeBundleId">Paket Franchise *</label>
+                          <select name="typeBundleId" id="typeBundleId" class="form-control" required>
                             <option selected> -- Paket franchise -- </option>
                             <% typeBundle.forEach(data=> { %>
-                              <option value="<%= data._id %> ">
+                              <option value="<%= data._id %>">
                                 <%= data.title %>
                               </option>
                               <% }) %>
                           </select>
                         </div>
-                        <div class="form-group col-md-6">
-                          <label for="username">Username</label>
-                          <input type="text" class="form-control" name="username" id="username"
-                            placeholder="Masukan username" required>
+                        <div class="form-group col-md-6" id="color">
+                          <label for="email">Email *</label>
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Masukan email"
+                            required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="password">Password</label>
+                          <label for="password">Password *</label>
                           <input type="password" class="form-control" name="password" id="password"
                             placeholder="Masukan username" required>
                         </div>
                         <div class="form-group col-md-6">
-                          <label for="confPassword">Confirm Password</label>
+                          <label for="confPassword">Confirm Password *</label>
                           <input type="password" class="form-control" name="confPassword" id="confPassword"
                             placeholder="Masukan confirm password" required>
                         </div>
@@ -140,14 +141,12 @@
                               <input type="text" class="form-control" name="instagram" id="instagram"
                                 placeholder="Masukan nama instagram">
                             </div>
-                            <div class="form-group col-md-6" id="color">
-                              <label for="email">Email</label>
-                              <input type="email" class="form-control" name="email" id="email"
-                                placeholder="Masukan email">
-                            </div>
+
                           </div>
+                          <span>* form wajib diisi</span>
                         </div>
-                        <div class="col-md-6">
+
+                        <div class="col-md-6 mt-2">
                           <a href="/admin/patner" class="btn btn-warning mr-2">Kembali</a>
                           <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
@@ -189,4 +188,6 @@
           $('.my-colorpicker2').on('colorpickerChange', function (event) {
             $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
           })
+
+
         </script>

@@ -1,0 +1,131 @@
+<%- include('../../layout/header.ejs') %>
+  <%- include('../../layout/navbar.ejs') %>
+    <%- include('../../layout/sidebar.ejs') %>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">
+                  <%= patner.nameOwner %>
+                </h1>
+              </div>
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <img class="img-fluid" src=/<%=patner.imageUrlKtp %> "
+                        alt="<%= patner.nameOwner %> ">
+                      </div>
+                      <div class="col-md-6">
+                        <table class="table table-borderless">
+                          <tr>
+                            <th>Informasi Pribadi</th>
+                          </tr>
+                          <tr>
+                            <td width="150">Alamat</td>
+                            <td>
+                              : <%= patner.address %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Nomer Nik</td>
+                            <td>
+                              : <%= patner.noNik %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Nomor HP / WA</td>
+                            <td>
+                              : <%= patner.noHp %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Email</td>
+                            <td>
+                              : <%= patner.email %>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+
+                      </div>
+                      <div class="col-md-6">
+                        <table class="table table-borderless">
+                          <tr>
+                            <th>Informasi Toko</th>
+                          </tr>
+                          <tr>
+                            <td width="150">Nama Brand</td>
+                            <td>
+                              : <%= patner.nameBrand %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Tagline</td>
+                            <td>
+                              : <%= patner.tagline %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Request Logo</td>
+                            <td>
+                              : <%= patner.isRequestLogo ? "Ya" : "Tidak" %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Color</td>
+                            <td>
+                              : <%= patner.color ? patner.color : "Tidak ada" %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Facebook</td>
+                            <td>
+                              : <%= patner.facebook %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Instagram</td>
+                            <td>
+                              : <%= patner.instagram %>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+            <div class="row">
+
+            </div>
+            <!-- /.row (main row) -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <%- include('../../layout/footer.ejs') %>

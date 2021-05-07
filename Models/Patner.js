@@ -53,10 +53,6 @@ const patnerScheme = new mongoose.Schema({
   email: {
     type: String,
   },
-  username: {
-    type: String,
-    required: true,
-  },
   password: {
     type: String,
     required: true,
@@ -77,6 +73,12 @@ const patnerScheme = new mongoose.Schema({
     {
       type: ObjectId,
       ref: "Product",
+    },
+  ],
+  imagesUrlId: [
+    {
+      type: ObjectId,
+      ref: "Image",
     },
   ],
 });
