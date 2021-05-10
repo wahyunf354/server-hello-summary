@@ -25,94 +25,123 @@
             <div class="row">
               <div class="col-12">
                 <div class="card">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <img class="img-fluid" src=/<%=patner.imageUrlKtp %> "
-                        alt="<%= patner.nameOwner %> ">
-                      </div>
-                      <div class="col-md-6">
-                        <table class="table table-borderless">
-                          <tr>
-                            <th>Informasi Pribadi</th>
-                          </tr>
-                          <tr>
-                            <td width="150">Alamat</td>
-                            <td>
-                              : <%= patner.address %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Nomer Nik</td>
-                            <td>
-                              : <%= patner.noNik %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Nomor HP / WA</td>
-                            <td>
-                              : <%= patner.noHp %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Email</td>
-                            <td>
-                              : <%= patner.email %>
-                            </td>
-                          </tr>
-                        </table>
-                      </div>
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a class="nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                        aria-controls="nav-profile" aria-selected="true">Profil</a>
+                      <a class="nav-link" id="nav-typebundle-tab" data-toggle="tab" href="#nav-typebundle" role="tab"
+                        aria-controls="nav-typebundle" aria-selected="false">Paket Franchise</a>
+                      <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                        aria-controls="nav-contact" aria-selected="false">Foto Lokasi</a>
+                      <a class="nav-link" id="nav-product-tab" data-toggle="tab" href="#nav-product" role="tab"
+                        aria-controls="nav-product" aria-selected="false">Produk</a>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel"
+                      aria-labelledby="nav-profile-tab">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="overflow-hidden text-center"
+                              style="width: auto; height: 300px;object-position: 50% 50%;">
+                              <img style="height: 250px;" src=/<%=patner.imageUrlKtp %> "
+                              alt="<%= patner.nameOwner %> ">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <table class="table table-borderless">
+                              <tr>
+                                <th>Informasi Pribadi</th>
+                              </tr>
+                              <tr>
+                                <td width="150">Alamat</td>
+                                <td>
+                                  : <%= patner.address %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Nomer Nik</td>
+                                <td>
+                                  : <%= patner.noNik %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Nomor HP / WA</td>
+                                <td>
+                                  : <%= patner.noHp %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Email</td>
+                                <td>
+                                  : <%= patner.email %>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                          </div>
+                          <div class="col-md-6">
+                            <table class="table table-borderless">
+                              <tr>
+                                <th>Informasi Toko</th>
+                              </tr>
+                              <tr>
+                                <td width="150">Nama Brand</td>
+                                <td>
+                                  : <%= patner.nameBrand %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Tagline</td>
+                                <td>
+                                  : <%= patner.tagline %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Request Logo</td>
+                                <td>
+                                  : <%= patner.isRequestLogo ? "Ya" : "Tidak" %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Color</td>
+                                <td>
+                                  : <%= patner.color ? patner.color : "Tidak ada" %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Facebook</td>
+                                <td>
+                                  : <%= patner.facebook %>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Instagram</td>
+                                <td>
+                                  : <%= patner.instagram %>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <a href="/admin/patner" class="btn btn-warning btn-sm">Kembali</a>
+                        </div>
                       </div>
-                      <div class="col-md-6">
-                        <table class="table table-borderless">
-                          <tr>
-                            <th>Informasi Toko</th>
-                          </tr>
-                          <tr>
-                            <td width="150">Nama Brand</td>
-                            <td>
-                              : <%= patner.nameBrand %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Tagline</td>
-                            <td>
-                              : <%= patner.tagline %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Request Logo</td>
-                            <td>
-                              : <%= patner.isRequestLogo ? "Ya" : "Tidak" %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Color</td>
-                            <td>
-                              : <%= patner.color ? patner.color : "Tidak ada" %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Facebook</td>
-                            <td>
-                              : <%= patner.facebook %>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Instagram</td>
-                            <td>
-                              : <%= patner.instagram %>
-                            </td>
-                          </tr>
-                        </table>
-                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <div class="tab-pane fade" id="nav-typebundle" role="tabpanel" aria-labelledby="nav-typebundle-tab">
+                      ..b
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">..c
+                    </div>
+                    <div class="tab-pane fade" id="nav-product" role="tabpanel" aria-labelledby="nav-product-tab">..d
                     </div>
                   </div>
-                  <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
               </div>

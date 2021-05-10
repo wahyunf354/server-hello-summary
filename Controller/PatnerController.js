@@ -115,9 +115,27 @@ const detailPatner = async (req, res) => {
   }
 };
 
+const displayformEdit = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const patner = await Patner.findOne({ _id: id });
+    res.render("admin/patner/edit", {
+      title: `Hello Summer | Edit Data Patner ${patner.nameOwner}`,
+      messages: req.flash("message"),
+      messageStatus: req.flash("messageStatus"),
+      patner,
+    });
+  } catch (error) {
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", "danger");
+    res.redirect("/admin/patner/add");
+  }
+};
+
 module.exports = {
   index,
   displayformAdd,
   addData,
   detailPatner,
+  displayformEdit,
 };
