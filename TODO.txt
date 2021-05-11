@@ -1,8 +1,9 @@
 TODO deploy
-TODO action edit patner
-TODO detail patner :    - menambah isi di menu paker franchise
-                        - menambah content di menu foto 
-                        - menambah content di menu Produk
+TODO action edit patner :     [x] Edit profil
+                              [ ] Ganti Password
+TODO detail patner :    [ ] menambah isi di menu paker franchise
+                        [ ] menambah content di menu foto 
+                        [ ] menambah content di menu Produk
 
 
 

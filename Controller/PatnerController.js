@@ -1,6 +1,8 @@
 const Patner = require("../Models/Patner");
 const TypeBundles = require("../Models/TypeBundles");
 const bcrypt = require("bcrypt");
+const fs = require("fs-extra");
+const path = require("path");
 const saltRounds = 10;
 
 const index = async (req, res) => {
@@ -132,10 +134,63 @@ const displayformEdit = async (req, res) => {
   }
 };
 
+const editProfilePatner = async (req, res) => {
+  try {
+    const body = req.body;
+    const patner = await Patner.findOne({ _id: body.id });
+    if (req.file == undefined) {
+      // jika tidak ada foto ktp yang diupload
+      patner.nameOwer = body.nameOwer;
+      patner.noNik = body.noNik;
+      patner.address = body.address;
+      patner.locationStore = body.locationStore;
+      patner.noHp = body.noHp;
+      patner.nameBrand = body.nameBrand;
+      patner.tagline = body.tagline;
+      patner.isRequestLogo = body.isRequestLogo;
+      patner.color = body.color;
+      patner.email = body.email;
+      patner.facebook = body.facebook;
+      patner.instagram = body.instagram;
+      await patner.save();
+      req.flash("message", `Berhasil Mengubah Data Patner`);
+      req.flash("messageStatus", "success");
+      res.redirect("/admin/patner");
+    } else {
+      // jika ada foto ktp yang diuplaod
+      await fs.unlink(path.join(`public/${patner.imageUrlKtp}`));
+
+      patner.nameOwer = body.nameOwer;
+      patner.noNik = body.noNik;
+      patner.address = body.address;
+      patner.locationStore = body.locationStore;
+      patner.noHp = body.noHp;
+      patner.nameBrand = body.nameBrand;
+      patner.tagline = body.tagline;
+      patner.isRequestLogo = body.isRequestLogo;
+      patner.color = body.color;
+      patner.email = body.email;
+      patner.facebook = body.facebook;
+      patner.instagram = body.instagram;
+      patner.imageUrlKtp = `images/${req.file.filename}`;
+      await patner.save();
+      req.flash("message", `Berhasil Mengubah Data Patner`);
+      req.flash("messageStatus", "success");
+      res.redirect("/admin/patner");
+    }
+  } catch (error) {
+    console.log(error);
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", "danger");
+    res.redirect("/admin/patner");
+  }
+};
+
 module.exports = {
   index,
   displayformAdd,
   addData,
   detailPatner,
   displayformEdit,
+  editProfilePatner,
 };
