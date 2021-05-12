@@ -135,8 +135,8 @@ const displayformEdit = async (req, res) => {
 };
 
 const editProfilePatner = async (req, res) => {
+  const body = req.body;
   try {
-    const body = req.body;
     const patner = await Patner.findOne({ _id: body.id });
     if (req.file == undefined) {
       // jika tidak ada foto ktp yang diupload
@@ -179,7 +179,80 @@ const editProfilePatner = async (req, res) => {
       res.redirect("/admin/patner");
     }
   } catch (error) {
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", "danger");
+    res.redirect("/admin/patner/edit/" + body.id);
+  }
+};
+
+const resetPasswordPatner = async (req, res) => {
+  const { id, passwordOld, passwordNew, confPasswordNew } = req.body;
+  try {
+    // compare conf password new
+    if (passwordNew === confPasswordNew) {
+      const patner = await Patner.findOne({ _id: id });
+      // cek password old
+      const match = await bcrypt.compare(passwordOld, patner.password);
+      if (match) {
+        // generate hash
+        const hash = bcrypt.hashSync(passwordNew, saltRounds);
+        // change password and saveto db
+        patner.password = hash;
+        await patner.save();
+        // notif if success
+        req.flash(
+          "message",
+          `Berhasil Merubah Password Patner yang Bernama ${patner.nameOwner}`
+        );
+        req.flash("messageStatus", "success");
+        res.redirect("/admin/patner");
+      } else {
+        req.flash("message", `Password Lama Salah`);
+        req.flash("messageStatus", "danger");
+        res.redirect("/admin/patner/edit/" + id);
+      }
+    } else {
+      req.flash("message", `Password Baru Tidak Sama`);
+      req.flash("messageStatus", "danger");
+      res.redirect("/admin/patner/edit/" + id);
+    }
+  } catch (error) {
     console.log(error);
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", "danger");
+    res.redirect("/admin/patner/edit/" + id);
+  }
+};
+
+const deletePatner = async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Ambil data paster dari db
+    const patner = await Patner.findOne({ _id: id });
+    // hapus image Ktp dari folder
+    await fs.unlink(path.join(`public/${patner.imageUrlKtp}`));
+
+    // cek jika patner memiliki gambar profile
+    if (patner.imagesUrlId.length > 0) {
+      // loop image array
+      // 1. delete image on folder
+      // 2. find image on db
+      // 3. delete image on db
+    }
+    // cek jika patner punya product
+    if (patner.productId.length > 0) {
+      // loop product
+      // delete all image product
+      // delete product
+    }
+    await patner.remove();
+    req.flash(
+      "message",
+      `Berhasil Menghapus Data Patner Dengan Nama: ${patner.nameOwner}`
+    );
+    req.flash("messageStatus", "warning");
+    res.redirect("/admin/patner");
+  } catch (error) {
     req.flash("message", `Error: ${error.message}`);
     req.flash("messageStatus", "danger");
     res.redirect("/admin/patner");
@@ -193,4 +266,6 @@ module.exports = {
   detailPatner,
   displayformEdit,
   editProfilePatner,
+  resetPasswordPatner,
+  deletePatner,
 };

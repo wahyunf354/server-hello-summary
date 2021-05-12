@@ -156,28 +156,29 @@
                     <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
                       <!-- Ubah Password -->
                       <div class="card-body">
-                        <form action="" method="post">
+                        <form action="/admin/patner/resetpassowrd?_method=PUT" method="post">
                           <div class="row">
 
                             <div class="form-group col-md-6">
-                              <label for="password_old">Password Lama</label>
-                              <input type="password" class="form-control" name="password_old" id="password_old"
+                              <label for="passwordOld">Password Lama</label>
+                              <input type="password" class="form-control" name="passwordOld" id="passwordOld"
                                 placeholder="Masukan password lama">
                             </div>
 
                             <div class="form-group col-md-6">
-                              <label for="password_new">Password Baru</label>
-                              <input type="password" class="form-control" name="password_new" id="password_new"
+                              <label for="passwordNew">Password Baru</label>
+                              <input type="password" class="form-control" name="passwordNew" id="passwordNew"
                                 placeholder="Masukan password baru">
                             </div>
 
                             <div class="form-group col-md-6">
-                              <label for="conf_password_new">Confirm Password Baru</label>
-                              <input type="password" class="form-control" name="conf_password_new"
-                                id="conf_password_new" placeholder="Masukan confirm password baru">
+                              <label for="confPasswordNew">Confirm Password Baru</label>
+                              <input type="password" class="form-control" name="confPasswordNew" id="confPasswordNew"
+                                placeholder="Masukan confirm password baru">
                             </div>
 
                             <div class="col-md-12 mt-2">
+                              <input type="hidden" name="id" value="<%= patner._id %>">
                               <a href="/admin/patner" class="btn btn-warning mr-2">Kembali</a>
                               <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>

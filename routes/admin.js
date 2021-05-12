@@ -16,9 +16,11 @@ router.get("/login", AdminController.login);
 router.get("/patner", PatnerController.index);
 router.post("/patner", upload, PatnerController.addData);
 router.put("/patner", upload, PatnerController.editProfilePatner);
+router.put("/patner/resetpassowrd", PatnerController.resetPasswordPatner);
 router.get("/patner/add", PatnerController.displayformAdd);
 router.get("/patner/edit/:id", PatnerController.displayformEdit);
 router.get("/patner/:id", PatnerController.detailPatner);
+router.delete("/patner/:id", PatnerController.deletePatner);
 
 // Product Page
 router.get("/product", ProductController.index);
