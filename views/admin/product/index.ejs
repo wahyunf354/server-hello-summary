@@ -25,10 +25,12 @@
 
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Tabel</h3>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddProduct">
+                      Tambah Produk
+                    </button>
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body">
+                  <div class=" card-body">
                     <table id="table_patner" class="table table-bordered table-striped">
                       <thead>
                         <tr>
@@ -74,11 +76,12 @@
         <!-- /.content -->
       </div>
       <%- include('../../layout/footer.ejs') %>
+        <%- include('./add.ejs') %>
 
-        <script>
-          $(function () {
-            $("#table_patner").DataTable({
-              "responsive": true
-            })
-          });
-        </script>
+          <script>
+            $(function () {
+              $("#table_patner").DataTable({
+                "responsive": true
+              })
+            });
+          </script>

@@ -1,0 +1,127 @@
+<%- include('../../layout/header.ejs') %>
+  <%- include('../../layout/navbar.ejs') %>
+    <%- include('../../layout/sidebar.ejs') %>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <%- include('../../layout/message.ejs') %>
+                <div class="col-sm-6">
+                  <h1 class="m-0">Kategori Produk</h1>
+                </div>
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-12">
+
+                <div class="card">
+                  <div class="card-header">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddType">
+                      Tambah Kategori
+                    </button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <table id="table_type" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th class="text-center">Judul</th>
+                          <th class="text-center">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% types.forEach((row, i)=> { %>
+                          <tr>
+                            <td>
+                              <%= i + 1 %>
+                            </td>
+                            <td>
+                              <%= row.title %>
+                            </td>
+                            <td>
+                              <form action="/admin/type/<%= row._id %>?_method=DELETE" method="POST">
+                                <a href="javascript:void()" data-title="<%= row.title %>" data-id="<%= row._id %>"
+                                  class="btn btn-sm text-primary button-edit">
+                                  <i class="fa fa-edit"></i>
+                                </a>
+                                <button type="submit" onclick="return confirm('Apakah anda yakin akan menghapus data?')"
+                                  class="btn btn-sm text-primary"><i class="fa fa-trash"></i></button>
+                              </form>
+                            </td>
+                          </tr>
+                          <% }) %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+            <div class="row">
+
+            </div>
+            <!-- /.row (main row) -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <%- include('../../layout/footer.ejs') %>
+        <%- include('./add.ejs') %>
+          <!-- TODO membuat modal edit -->
+          <%# include('./edit.ejs') %>
+
+            <script>
+              $(function () {
+                $("#table_type").DataTable({
+                  "responsive": true,
+                  "columnDefs": [
+                    {
+                      "targets": 0,
+                      "width": "5%",
+                      "orderable": false
+                    },
+                    {
+                      "targets": 2,
+                      "className": "text-center",
+                      "orderable": false
+                    }
+                  ]
+                })
+              });
+
+              // Even Click Button Edit
+              $('#table_type').on('click', '.button-edit', function () {
+
+                // assign variable from data paket franchise
+                let title = $(this).data('title')
+                let price = $(this).data('price')
+                let description = $(this).data('description')
+                let id = $(this).data('id')
+
+                // Display value on form
+                $('.title').val(title)
+                $('.price').val(price)
+                $('.description').val(description)
+                $('.id').val(id)
+
+                // Display Modal
+                $('#ModalEditTypeBundle').modal('show')
+              })
+
+            </script>

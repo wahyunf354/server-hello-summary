@@ -234,14 +234,14 @@ const deletePatner = async (req, res) => {
 
     // cek jika patner memiliki gambar profile
     if (patner.imagesUrlId.length > 0) {
-      // loop image array
+      // TODO loop image array
       // 1. delete image on folder
       // 2. find image on db
       // 3. delete image on db
     }
     // cek jika patner punya product
     if (patner.productId.length > 0) {
-      // loop product
+      // TODO loop product
       // delete all image product
       // delete product
     }
