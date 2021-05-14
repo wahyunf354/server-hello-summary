@@ -83,8 +83,7 @@
       </div>
       <%- include('../../layout/footer.ejs') %>
         <%- include('./add.ejs') %>
-          <!-- TODO membuat modal edit -->
-          <%# include('./edit.ejs') %>
+          <%- include('./edit.ejs') %>
 
             <script>
               $(function () {
@@ -110,18 +109,14 @@
 
                 // assign variable from data paket franchise
                 let title = $(this).data('title')
-                let price = $(this).data('price')
-                let description = $(this).data('description')
                 let id = $(this).data('id')
 
                 // Display value on form
                 $('.title').val(title)
-                $('.price').val(price)
-                $('.description').val(description)
                 $('.id').val(id)
 
                 // Display Modal
-                $('#ModalEditTypeBundle').modal('show')
+                $('#ModalEditType').modal('show')
               })
 
             </script>
