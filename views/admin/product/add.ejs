@@ -13,8 +13,9 @@
           <div class="card-body">
             <div class="form-group">
               <label for="name">Nama Produk</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Masukan Harga" required>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Masukan nama produk" required>
             </div>
+
             <div class="form-group">
               <label for="description">Keterangan</label>
               <textarea type="text" class="form-control" name="description" id="description"
@@ -24,7 +25,7 @@
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="image">Gambar</label>
-                <input type="file" class="form-control" name="image" id="image" required>
+                <input type="file" class="form-control" name="image" id="image" required multiple>
                 <small>Pilih beberapa gambar</small>
               </div>
               <div class="form-group col-md-6">
@@ -33,8 +34,8 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="type">Kategori</label>
-              <select class="form-control" name="type" id="type">
+              <label for="type_id">Kategori</label>
+              <select class="form-control" name="type_id" id="type_id">
                 <option value="" selected>-- Pilih Kategori --</option>
                 <% types.forEach(row=> { %>
                   <option value="<%= row._id %>">

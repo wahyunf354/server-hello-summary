@@ -12,8 +12,10 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var adminRouter = require("./routes/admin");
 
+require("dotenv").config();
+
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/db_hello_summer", {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
