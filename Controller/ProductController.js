@@ -2,6 +2,12 @@ const Product = require("../Models/Product");
 const Type = require("../Models/Type");
 const Image = require("../Models/ImageUrl");
 
+function formatNumber(num) {
+  return new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(
+    num
+  );
+}
+
 async function index(req, res) {
   try {
     const types = await Type.find();
@@ -24,7 +30,6 @@ async function index(req, res) {
 async function addData(req, res) {
   try {
     const { name, description, price, type_id } = req.body;
-    console.log(req.files);
     if (req.files.length > 0) {
       // panggil type
       const type = await Type.findOne({ _id: type_id });
@@ -69,11 +74,12 @@ async function show(req, res) {
   try {
     const { id } = req.params;
     const product = await Product.findById(id).populate("imageUrl");
-    console.log(product);
+    const priceHasFormat = formatNumber(product.price);
 
     res.render("admin/product/info", {
       title: "Hello Summer | Info Produk",
       product,
+      priceHasFormat,
       messages: req.flash("message"),
       messageStatus: req.flash("messageStatus"),
     });
