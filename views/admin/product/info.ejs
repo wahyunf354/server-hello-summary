@@ -1,0 +1,62 @@
+
+<%- include('../../layout/header.ejs') %>
+  <%- include('../../layout/navbar.ejs') %>
+    <%- include('../../layout/sidebar.ejs') %>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <%- include('../../layout/message.ejs') %>
+                <div class="col-sm-6">
+                  <h1 class="m-0">Info Produk</h1>
+                </div>
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+              <div class="col-12">
+
+                <div class="card">
+                  <div class="card-header">
+
+                    <h4 class="text-muted"><%= product.name %></h4>
+
+                  </div>
+                  <!-- /.card-header -->
+                  <div class=" card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <% product.imageUrl.forEach(function(img) { %>
+                        <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2" width="300px" alt="<%= img.imageUrl %>">
+                        <% }) %>
+                      </div>
+                      <div class="col-md-6"></div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Main row -->
+            <div class="row">
+
+            </div>
+            <!-- /.row (main row) -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <%- include('../../layout/footer.ejs') %>
+

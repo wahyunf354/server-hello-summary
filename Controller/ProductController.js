@@ -5,7 +5,7 @@ const Image = require("../Models/ImageUrl");
 async function index(req, res) {
   try {
     const types = await Type.find();
-    const products = await Product.find().populate("imageUrl");
+    const products = await Product.find();
 
     res.render("admin/product", {
       title: "Hello Summer | Product",
@@ -65,7 +65,28 @@ async function addData(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id).populate("imageUrl");
+    console.log(product);
+
+    res.render("admin/product/info", {
+      title: "Hello Summer | Info Produk",
+      product,
+      messages: req.flash("message"),
+      messageStatus: req.flash("messageStatus"),
+    });
+  } catch (error) {
+    console.log("Error: ", error);
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", `danger`);
+    res.redirect("/admin/product");
+  }
+}
+
 module.exports = {
   index,
   addData,
+  show,
 };
