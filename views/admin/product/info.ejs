@@ -8,13 +8,13 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
           <div class="container-fluid">
-                    <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Admin</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/product">Produk</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><%= product.name %></li>
-                      </ol>
-                    </nav>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Admin</a></li>
+                <li class="breadcrumb-item"><a href="/admin/product">Produk</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%= product.name %></li>
+              </ol>
+            </nav>
             <div class="row mb-2">
               <%- include('../../layout/message.ejs') %>
                 <div class="col-sm-6">
@@ -35,23 +35,26 @@
                 <div class="card">
                   <div class=" card-body">
                     <div class="row">
-                      <div class="col-md-6">
-                        <% product.imageUrl.forEach(function(img) { %>
-                        <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2" width="300px" alt="<%= img.imageUrl %>">
+                      <div class="col-md-6 d-flex flex-wrap">
+                        <% product.imageUrl.forEach(function(img, i) { %>
+                        <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2 img-produk" 
+                                                        width="<%= i == 0 ? '500px' : '150px' %>" alt="<%= img.imageUrl %>">
                         <% }) %>
+                        <button style="width: 150px" class="btn btn-sm" >
+                          <i class="fa fa-plus"></i>
+                        </button>
                       </div>
                       <div class="col-md-6">
                         <div class="mb-2">
-                          <span class="text-muted d-block">Nama</span>
-                          <span class="h4 text-dark font-bold d-block"><%= product.name %></span>
+                          <h2 class="h4 text-dark font-weight-bold d-block"><%= product.name %></h2>
+                        </div>
+                        <div>
+                          <span class="text-muted d-block">Harga</span>
+                          <span class="text-dark font-bold d-block h3 text-danger">Rp <%= priceHasFormat %>,-</span>
                         </div>
                         <div>
                           <span class="text-muted d-block">Deskripsi</span>
                           <span class="text-dark font-bold d-block h5"><%= product.description %></span>
-                        </div>
-                        <div>
-                          <span class="text-muted d-block">Harga</span>
-                          <span class="text-dark font-bold d-block h5">Rp <%= priceHasFormat %>,-</span>
                         </div>
                       </div>
                     </div>
