@@ -1,13 +1,9 @@
 const Product = require("../Models/Product");
 const Type = require("../Models/Type");
 const Image = require("../Models/ImageUrl");
+const { formatNumber } = require("../utility/formatNumber");
 
-function formatNumber(num) {
-  return new Intl.NumberFormat("en-IN", { maximumSignificantDigits: 3 }).format(
-    num
-  );
-}
-
+// function untuk menampilkan semua product
 async function index(req, res) {
   try {
     const types = await Type.find();
@@ -27,6 +23,7 @@ async function index(req, res) {
   }
 }
 
+// function untuk menambah produk baru
 async function addData(req, res) {
   try {
     const { name, description, price, type_id } = req.body;
@@ -70,6 +67,7 @@ async function addData(req, res) {
   }
 }
 
+// function untuk menampilkan 1 product berdasarkan id
 async function show(req, res) {
   try {
     const { id } = req.params;
@@ -91,8 +89,39 @@ async function show(req, res) {
   }
 }
 
+// function untuk menambah gambar product yang sudah ada
+async function addImages(req, res) {
+  try {
+    const { id } = req.params;
+    if (req.files.length > 0) {
+      const product = await Product.findById(id);
+
+      // Melakukan penyimpanan gambar product
+      for (let i = 0; i < req.files.length; i++) {
+        const imageSave = await Image.create({
+          imageUrl: `images/${req.files[i].filename}`,
+        });
+
+        // simpan id gambar di product
+        product.imageUrl.push({ _id: imageSave._id });
+        await product.save();
+      }
+
+      req.flash("message", `Gambar Berhasil Ditambahkan`);
+      req.flash("messageStatus", `success`);
+      res.redirect("/admin/product/" + id);
+    }
+  } catch (error) {
+    console.log("Error: ", error);
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", `danger`);
+    res.redirect("/admin/product");
+  }
+}
+
 module.exports = {
   index,
   addData,
   show,
+  addImages,
 };

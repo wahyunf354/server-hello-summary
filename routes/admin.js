@@ -27,6 +27,11 @@ router.delete("/patner/:id", PatnerController.deletePatner);
 router.get("/product", ProductController.index);
 router.post("/product", uploadMultiple, ProductController.addData);
 router.get("/product/:id", ProductController.show);
+router.post(
+  "/product/addimages/:id",
+  uploadMultiple,
+  ProductController.addImages
+);
 
 // Type Page / Category Page
 router.get("/type", TypeController.index);

@@ -1,4 +1,3 @@
-
 <%- include('../../layout/header.ejs') %>
   <%- include('../../layout/navbar.ejs') %>
     <%- include('../../layout/sidebar.ejs') %>
@@ -35,15 +34,19 @@
                 <div class="card">
                   <div class=" card-body">
                     <div class="row">
-                      <div class="col-md-6 d-flex flex-wrap">
-                        <% product.imageUrl.forEach(function(img, i) { %>
-                        <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2 img-produk" 
-                                                        width="<%= i == 0 ? '500px' : '150px' %>" alt="<%= img.imageUrl %>">
-                        <% }) %>
-                        <button style="width: 150px" class="btn btn-sm" >
-                          <i class="fa fa-plus"></i>
-                        </button>
-                      </div>
+
+                      <form class="col-md-6" enctype="multipart/form-data" action="/admin/product/addimages/<%= product._id%>" method="post" id="form-upload">
+                        <div class="d-flex flex-wrap">
+                          <% product.imageUrl.forEach(function(img, i) { %>
+                          <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2 img-produk" 
+                                                          width="<%= i == 0 ? '500px' : '150px' %>" alt="<%= img.imageUrl %>">
+                          <% }) %>
+                            <input type="file" style="display: none" name="image" id="image" multiple>
+                            <button type='submit' id="btn-upload" style="width: 150px" class="btn btn-sm" >
+                              <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                      </form>
                       <div class="col-md-6">
                         <div class="mb-2">
                           <h2 class="h4 text-dark font-weight-bold d-block"><%= product.name %></h2>
@@ -77,3 +80,16 @@
       </div>
       <%- include('../../layout/footer.ejs') %>
 
+      <script>
+        jQuery(function($) {
+          $("#btn-upload").on('click', function(e) {
+            e.preventDefault();
+            $('#image').trigger('click');
+          })
+
+          $("#image").change(function() {
+            $("#form-upload").submit()
+          })
+
+        })
+      </script>
