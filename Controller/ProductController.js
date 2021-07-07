@@ -9,9 +9,16 @@ async function index(req, res) {
     const types = await Type.find();
     const products = await Product.find();
 
+    const result = products.map((e) => {
+      return {
+        ...e._doc,
+        price: formatNumber(e.price),
+      };
+    });
+
     res.render("admin/product", {
       title: "Hello Summer | Product",
-      products,
+      products: result,
       types,
       messages: req.flash("message"),
       messageStatus: req.flash("messageStatus"),
