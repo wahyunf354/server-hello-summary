@@ -38,8 +38,11 @@
                       <form class="col-md-6" enctype="multipart/form-data" action="/admin/product/addimages/<%= product._id%>" method="post" id="form-upload">
                         <div class="d-flex flex-wrap">
                           <% product.imageUrl.forEach(function(img, i) { %>
-                          <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2 img-produk" 
+                          <form class="position-relative" action="/admin/product/deleteImage/<%= product._id%>/<%= img._id %>?_method=DELETE" method='POST'>
+                            <button type="submit" class="position-absolute btn btn-danger btn-sm" style="right: 0">x</button>
+                            <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2 img-produk" 
                                                           width="<%= i == 0 ? '500px' : '150px' %>" alt="<%= img.imageUrl %>">
+                          </form>
                           <% }) %>
                             <input type="file" style="display: none" name="image" id="image" multiple>
                             <button type='submit' id="btn-upload" style="width: 150px" class="btn btn-sm" >

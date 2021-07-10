@@ -126,9 +126,37 @@ async function addImages(req, res) {
   }
 }
 
+async function deleteImage(req, res) {
+  try {
+    const { idProduct, idImage } = req.params;
+
+    // delete file image on folder
+    // TODO:
+
+    // delete data image on db
+    const product = await Product.find(idProduct);
+    const newImages = product.imageUrl.filter((e) => e != idImage);
+
+    // 1. Delete data on colection Image
+    await Image.findOneAndRemove({ _id: idImage });
+    // 2. Delete data id image on collection Product
+    product.imageUrl = newImages;
+    await product.save();
+    req.flash("message", `Gambar Berhasil Ditambahkan`);
+    req.flash("messageStatus", `success`);
+    res.redirect("/admin/product/" + idProduct);
+  } catch (error) {
+    console.log("Error: ", error);
+    req.flash("message", `Error: ${error.message}`);
+    req.flash("messageStatus", `danger`);
+    res.redirect("/admin/product");
+  }
+}
+
 module.exports = {
   index,
   addData,
   show,
   addImages,
+  deleteImage,
 };

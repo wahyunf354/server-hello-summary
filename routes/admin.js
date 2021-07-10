@@ -32,6 +32,10 @@ router.post(
   uploadMultiple,
   ProductController.addImages
 );
+router.delete(
+  "/product/deleteImage/:idProduct/:idImage",
+  ProductController.deleteImage
+);
 
 // Type Page / Category Page
 router.get("/type", TypeController.index);
