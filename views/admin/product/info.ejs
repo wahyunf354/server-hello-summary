@@ -35,22 +35,31 @@
                   <div class=" card-body">
                     <div class="row">
 
-                      <form class="col-md-6" enctype="multipart/form-data" action="/admin/product/addimages/<%= product._id%>" method="post" id="form-upload">
+                      <div class="col-md-4">
                         <div class="d-flex flex-wrap">
-                          <% product.imageUrl.forEach(function(img, i) { %>
-                          <form class="position-relative" action="/admin/product/deleteImage/<%= product._id%>/<%= img._id %>?_method=DELETE" method='POST'>
-                            <button type="submit" class="position-absolute btn btn-danger btn-sm" style="right: 0">x</button>
-                            <img src="/<%= img.imageUrl %>" class="img-fluid rounded img-thumbnail m-2 img-produk" 
-                                                          width="<%= i == 0 ? '500px' : '150px' %>" alt="<%= img.imageUrl %>">
-                          </form>
-                          <% }) %>
-                            <input type="file" style="display: none" name="image" id="image" multiple>
-                            <button type='submit' id="btn-upload" style="width: 150px" class="btn btn-sm" >
-                              <i class="fa fa-plus"></i>
-                            </button>
+                            <% product.imageUrl.forEach(function(img, i) { %>
+                              <form class="position-relative" action="/admin/product/deleteImage/<%= product._id%>/<%= img._id %>?_method=DELETE" method="post">
+                                <button type="submit" class="position-absolute btn btn-danger btn-sm">x</button>
+                                <img src="/<%= img.imageUrl %>" 
+                                     class="img-fluid rounded img-thumbnail m-2 img-produk" 
+                                     width="<%= i == 0 ? '400px' : '150px' %>" 
+                                     alt="<%= img.imageUrl %>">
+                              </form>
+                            <% }) %>
+                            <form class="d-flex justify-center align-center" 
+                                  enctype="multipart/form-data" 
+                                  action="/admin/product/addimages/<%= product._id%>" 
+                                  method="post" 
+                                  id="form-upload">
+                              <input type="file" style="display: none" name="image" id="image" multiple>
+                              <button type='submit' id="btn-upload" style="width: 150px; height: 100px;" class="btn btn-sm" >
+                                <i class="fa fa-plus"></i>
+                              </button>
+                            </form>
                         </div>
-                      </form>
-                      <div class="col-md-6">
+                      </div>
+
+                      <div class="col-md-6 pl-5">
                         <div class="mb-2">
                           <h2 class="h4 text-dark font-weight-bold d-block"><%= product.name %></h2>
                         </div>
@@ -63,6 +72,7 @@
                           <span class="text-dark font-bold d-block h5"><%= product.description %></span>
                         </div>
                       </div>
+
                     </div>
                   </div>
                   <!-- /.card-body -->

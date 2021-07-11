@@ -2,6 +2,8 @@ const Product = require("../Models/Product");
 const Type = require("../Models/Type");
 const Image = require("../Models/ImageUrl");
 const { formatNumber } = require("../utility/formatNumber");
+const fs = require("fs-extra");
+const path = require("path");
 
 // function untuk menampilkan semua product
 async function index(req, res) {
@@ -129,27 +131,30 @@ async function addImages(req, res) {
 async function deleteImage(req, res) {
   try {
     const { idProduct, idImage } = req.params;
-
-    // delete file image on folder
-    // TODO:
+    const product = await Product.findOne({ _id: idProduct });
+    console.log("Product: ", product);
 
     // delete data image on db
-    const product = await Product.find(idProduct);
-    const newImages = product.imageUrl.filter((e) => e != idImage);
-
     // 1. Delete data on colection Image
-    await Image.findOneAndRemove({ _id: idImage });
+    const image = await Image.findOneAndRemove({ _id: idImage });
+    console.log("Image: ", image);
+
+    // 1.1 delete file image on folder
+    await fs.unlink(path.join(`public/${image.imageUrl}`));
+
     // 2. Delete data id image on collection Product
-    product.imageUrl = newImages;
+    product.imageUrl.splice(product.imageUrl.indexOf(idImage), 1);
+    console.log("Product Image New: ", product.imageUrl);
     await product.save();
-    req.flash("message", `Gambar Berhasil Ditambahkan`);
-    req.flash("messageStatus", `success`);
+
+    req.flash("message", `Gambar Berhasil Dihapus`);
+    req.flash("messageStatus", `warning`);
     res.redirect("/admin/product/" + idProduct);
   } catch (error) {
     console.log("Error: ", error);
     req.flash("message", `Error: ${error.message}`);
     req.flash("messageStatus", `danger`);
-    res.redirect("/admin/product");
+    res.redirect("/admin/product/" + idProduct);
   }
 }
 
